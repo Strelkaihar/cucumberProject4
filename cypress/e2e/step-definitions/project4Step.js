@@ -23,6 +23,7 @@ Then(/^the user should see the table with the headers below$/, (dataTable) => {
 
 Then(/^the user should see the table with the rows below$/, (dataTable) => {
 	const arr = dataTable.rawTable.flat()
+	
 	project4.getTableRows().each((el, index) => {
 		cy.wrap(el).should('have.text', arr[index])
 	})
@@ -74,17 +75,15 @@ Then(/^the user should not see the "([^"]*)" modal$/, () => {
 	project4.getAddNewProductHeader().should('not.exist')
 })
 
-Then(/^the user enters the quantity as "([^"]*)"$/, (number) => {
-	project4.getAddProductInputField().eq(0).type(number)
+Then(/^the user enters the following inputs$/, (dataTable) => {
+	const arr = dataTable.rawTable.flat()
+
+	project4.getAddProductInputField().each((el, index) => {
+		cy.wrap(el).type(arr[index])
+	})
 })
 
-Then(/^the user enters the product as "([^"]*)"$/, (product) => {
-	project4.getAddProductInputField().eq(1).type(product)
-})
 
-Then(/^the user enters the price as "([^"]*)"$/, (price) => {
-	project4.getAddProductInputField().eq(2).type(price)
-})
 
 
 

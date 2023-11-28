@@ -1,7 +1,9 @@
 Feature: Project - Dynamic Tables
+    Background: 
+        Given the user is on "https://techglobal-training.com/frontend/project-4"
 
     Scenario: Test Case 01 - Validate the default content of the inventory table
-    Given the user is on "https://techglobal-training.com/frontend/project-4"
+   
     Then the user should see the "Inventory" heading
     Then the user should see the table with the headers below
         | Quantity | Product | Price $ | Total $ |  
@@ -13,7 +15,7 @@ Feature: Project - Dynamic Tables
     Then the user should see the "Total = $2,300" text displayed
 
     Scenario: Test Case 02 - Validate the Add New Product modal
-    Given the user is on "https://techglobal-training.com/frontend/project-4"
+    
     When the user clicks on the "ADD PRODUCT" button
     Then the user should see the "Add New Product" modal with its heading
     Then the user should see the "X" button is enabled
@@ -30,18 +32,17 @@ Feature: Project - Dynamic Tables
     And the user should see the "SUBMIT" button is enabled 
 
     Scenario: Test Case 03 - Validate the Add New Product modal X button
-    Given the user is on "https://techglobal-training.com/frontend/project-4"
+    
     When the user clicks on the "ADD PRODUCT" button
     Then the user should see the "Add New Product" modal with its heading
     When the user clicks on the "X" button
     Then the user should not see the "Add New Product" modal
 
-    Scenario: Test Case 04 - Validate the Add New Product modal X button
-    Given the user is on "https://techglobal-training.com/frontend/project-4"
+    Scenario: Test Case 04 - Validate the new product added
+    
     When the user clicks on the "ADD PRODUCT" button
-    Then the user enters the quantity as "2"
-    Then the user enters the product as "Mouse"
-    Then the user enters the price as "100"
+    Then the user enters the following inputs
+    | 2  | Mouse  | 100  |
     Then the user clicks on the "SUBMIT" button
     Then the user should see the table with the new row below
     | 2 | Mouse | 100 | 200 |
